@@ -58,7 +58,6 @@
 
 const { connectDB } = require('./config/database');
 
-// Créer une nouvelle réponse
 async function createAnswer(answer) {
     try {
         const db = await connectDB();
@@ -70,12 +69,10 @@ async function createAnswer(answer) {
     }
 }
 
-// Lire toutes les réponses
 async function readAnswers() {
     try {
         const db = await connectDB();
         const answers = await db.collection('answers').find().toArray();
-        // Utiliser JSON.stringify pour afficher les réponses de manière lisible
         console.log('Answers:', JSON.stringify(answers, null, 2));
         return answers;
     } catch (err) {
@@ -83,7 +80,7 @@ async function readAnswers() {
     }
 }
 
-// Mettre à jour une réponse
+
 async function updateAnswer(answerId, update) {
     try {
         const db = await connectDB();
@@ -98,7 +95,7 @@ async function updateAnswer(answerId, update) {
     }
 }
 
-// Supprimer une réponse
+
 async function deleteAnswer(answerId) {
     try {
         const db = await connectDB();

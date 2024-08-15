@@ -55,7 +55,6 @@
 
 const { connectDB } = require('./config/database');
 
-// Créer une nouvelle question
 async function createQuestion(question) {
     try {
         const db = await connectDB();
@@ -67,12 +66,10 @@ async function createQuestion(question) {
     }
 }
 
-// Lire toutes les questions
 async function readQuestions() {
     try {
         const db = await connectDB();
         const questions = await db.collection('questions').find().toArray();
-        // Utiliser JSON.stringify pour afficher les questions de manière lisible
         console.log('Questions:', JSON.stringify(questions, null, 2));
         return questions;
     } catch (err) {
@@ -80,7 +77,7 @@ async function readQuestions() {
     }
 }
 
-// Mettre à jour une question
+
 async function updateQuestion(questionId, update) {
     try {
         const db = await connectDB();
@@ -95,7 +92,7 @@ async function updateQuestion(questionId, update) {
     }
 }
 
-// Supprimer une question
+
 async function deleteQuestion(questionId) {
     try {
         const db = await connectDB();
