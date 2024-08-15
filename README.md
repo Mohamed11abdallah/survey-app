@@ -1,8 +1,6 @@
 # Survey App
 
-## Description
-
-Survey App est une application JavaScript simple permettant de gérer les fiches d'enquête de satisfaction des clients. L'application utilise une base de données MongoDB pour stocker les données et permet d'effectuer des opérations CRUD (Create, Read, Update, Delete) sur ces fiches.
+Survey App est une application JavaScript conçue pour gérer les enquêtes de satisfaction des clients. Elle utilise MongoDB pour le stockage des données et permet de réaliser des opérations CRUD (Create, Read, Update, Delete) sur les fiches, questions et réponses des enquêtes.
 
 ## Prérequis
 
@@ -36,7 +34,7 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 4. **Configurez la base de données :**
 
     - Assurez-vous que MongoDB est en cours d'exécution sur votre machine locale.
-    - Mettez les paramètres de connexion dans `config/database.js`.
+    - Modifiez les paramètres de connexion dans le fichier `config/database.js` pour correspondre à votre configuration MongoDB.
 
 ## Utilisation
 
@@ -46,64 +44,68 @@ Pour démarrer l'application, exécutez la commande suivante :
 npm start
 ```
 
-## Documentation des fonction
+Fonctionnalités
+Gestion des Enquêtes (surveysModule)
 
-createFile(db, fileData)
+    Ajouter une enquête : createFile(db, fileData)
+        Insère une enquête dans la collection surveysModule.
+        Affiche l'ID de l'enquête ajoutée ou une erreur.
 
-Insère un fichier dans la collection surveysModule. Affiche l'ID du fichier ou une erreur.
-readFiles(db)
+    Lire toutes les enquêtes : readFiles(db)
+        Récupère toutes les enquêtes de la collection surveysModule.
+        Affiche les enquêtes ou une erreur.
 
-Récupère tous les fichiers de la collection fichiers. Affiche les fichiers ou une erreur.
-updateFile(db, filter, updateData)
+    Mettre à jour une enquête : updateFile(db, filter, updateData)
+        Met à jour une enquête selon le filtre et les nouvelles données.
+        Affiche le nombre d'enquêtes modifiées ou une erreur.
 
-Met à jour un fichier selon le filtre et les nouvelles données. Affiche le nombre de fichiers modifiés ou une erreur.
-deleteFile(db, filter)
+    Supprimer une enquête : deleteFile(db, filter)
+        Supprime une enquête selon le filtre.
+        Affiche le nombre d'enquêtes supprimées ou une erreur.
 
-Supprime un fichier selon le filtre. Affiche le nombre de fichiers supprimés ou une erreur.
-connect()
+Gestion des Questions (questionsModule)
 
-Se connecte à MongoDB. Renvoie les instances db et client ou une erreur.
+    Ajouter une question : createQuestion(db, questionData)
+        Ajoute une question à la collection questionsModule.
+        Affiche l'ID de la question ajoutée ou une erreur.
 
---------------------
+    Lire toutes les questions : readQuestions(db)
+        Récupère toutes les questions de la collection questionsModule.
+        Affiche les questions ou une erreur.
 
-createQuestion(db, questionData)
+    Mettre à jour une question : updateQuestion(db, filter, updateData)
+        Met à jour une question selon le filtre et les nouvelles données.
+        Affiche le nombre de questions modifiées ou une erreur.
 
-Ajoute une question à la collection questionsModule Affiche l'ID de la question ou une erreur.
-readQuestions(db)
+    Supprimer une question : deleteQuestion(db, filter)
+        Supprime une question selon le filtre.
+        Affiche le nombre de questions supprimées ou une erreur.
 
-Récupère toutes les questions de la collection questions. Renvoie un tableau ou une erreur.
-updateQuestion(db, filter, updateData)
+Gestion des Réponses (answersModule)
 
-Met à jour une question selon le filtre et les nouvelles données. Affiche le nombre de questions modifiées ou une erreur.
-deleteQuestion(db, filter)
+    Ajouter une réponse : createAnswer(db, answerData)
+        Ajoute une réponse à la collection answersModule.
+        Affiche l'ID de la réponse ajoutée ou une erreur.
 
-Supprime une question selon le filtre. Affiche le nombre de questions supprimées ou une erreur.
-connect()
+    Lire toutes les réponses : readAnswers(db)
+        Récupère toutes les réponses de la collection answersModule.
+        Affiche les réponses ou une erreur.
 
-Se connecte à MongoDB. Renvoie les instances db et client ou une erreur.
+    Mettre à jour une réponse : updateAnswer(db, filter, updateData)
+        Met à jour une réponse selon le filtre et les nouvelles données.
+        Affiche le nombre de réponses modifiées ou une erreur.
 
+    Supprimer une réponse : deleteAnswer(db, filter)
+        Supprime une réponse selon le filtre.
+        Affiche le nombre de réponses supprimées ou une erreur.
 
+Connexion à MongoDB
 
----------------------
-
-createAnswer(db, answerData)
-
-Ajoute une réponse à la collection answersModule Affiche l'ID de la réponse ou une erreur.
-readAnswers(db)
-
-Récupère toutes les réponses de la collection reponses. Affiche les réponses ou une erreur.
-updateAnswer(db, filter, updateData)
-
-Met à jour une réponse selon le filtre et les nouvelles données. Affiche le nombre de réponses modifiées ou une erreur.
-deleteAnswer(db, filter)
-
-Supprime une réponse selon le filtre. Affiche le nombre de réponses supprimées ou une erreur.
-connect()
-
-Se connecte à MongoDB. Renvoie les instances db et client ou une erreur.
-
+    Se connecter à MongoDB : connect()
+        Se connecte à MongoDB et renvoie les instances db et client ou une erreur.
 
 
-## Authors
 
-Mohamed Abdallahi M'khaitir
+Authors
+
+    Mohamed Abdallahi M'khaitir
