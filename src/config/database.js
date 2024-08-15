@@ -5,7 +5,7 @@ const dbName = 'survey_management';
 let db = null;
 
 async function connectDB() {
-    if (db) return db; // Si la connexion est déjà établie, la renvoyer
+    if (db) return db;
 
     try {
         const client = new MongoClient(url);
