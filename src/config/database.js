@@ -1,27 +1,22 @@
-
-
 const { MongoClient } = require('mongodb');
+
 const url = 'mongodb://localhost:27017';
-const dbName = 'fiches_enquete';
+const dbName = 'survey_management';
+let db = null;
 
-const client = new MongoClient(url);
+async function connectDB() {
+    if (db) return db; // Si la connexion est déjà établie, la renvoyer
 
-client.connect()
-    .then(() => {
+    try {
+        const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+        await client.connect();
         console.log('Connecté à MongoDB');
-        const db = client.db(dbName);
-
-    })
-    .catch(err => {
-        console.error('Erreur lors de la connexion à MongoDB:', err);
-    });
-
-// Exporter la connexion à la base de données
-function getDb() {
-    if (!db) {
-        throw new Error("La connexion à la base de données n'est pas encore établie");
+        db = client.db(dbName);
+        return db;
+    } catch (error) {
+        console.error('Erreur lors de la connexion à MongoDB:', error.message);
+        throw error;
     }
-    return db;
 }
 
-module.exports = { getDb };
+module.exports = { connectDB };
