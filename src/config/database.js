@@ -8,7 +8,7 @@ async function connectDB() {
     if (db) return db; // Si la connexion est déjà établie, la renvoyer
 
     try {
-        const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+        const client = new MongoClient(url);
         await client.connect();
         console.log('Connecté à MongoDB');
         db = client.db(dbName);
