@@ -50,7 +50,7 @@ npm start
 
 createFile(db, fileData)
 
-Insère un fichier dans la collection surveys. Affiche l'ID du fichier ou une erreur.
+Insère un fichier dans la collection surveysModule. Affiche l'ID du fichier ou une erreur.
 readFiles(db)
 
 Récupère tous les fichiers de la collection fichiers. Affiche les fichiers ou une erreur.
@@ -68,7 +68,7 @@ Se connecte à MongoDB. Renvoie les instances db et client ou une erreur.
 
 createQuestion(db, questionData)
 
-Ajoute une question à la collection questions. Affiche l'ID de la question ou une erreur.
+Ajoute une question à la collection questionsModule Affiche l'ID de la question ou une erreur.
 readQuestions(db)
 
 Récupère toutes les questions de la collection questions. Renvoie un tableau ou une erreur.
@@ -88,7 +88,7 @@ Se connecte à MongoDB. Renvoie les instances db et client ou une erreur.
 
 createAnswer(db, answerData)
 
-Ajoute une réponse à la collection answers. Affiche l'ID de la réponse ou une erreur.
+Ajoute une réponse à la collection answersModule Affiche l'ID de la réponse ou une erreur.
 readAnswers(db)
 
 Récupère toutes les réponses de la collection reponses. Affiche les réponses ou une erreur.
