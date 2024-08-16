@@ -44,77 +44,84 @@ Pour démarrer l'application, exécutez la commande suivante :
 npm start
 ```
 
-## Documentation des Fonctions
-(surveysModule)
-createSurvey(survey)
-Ajoute une nouvelle enquête et renvoie l'ID inséré.
-        survey (object)
-            surveyId (int)
-            title (string)
-            description (string)
-            questions (array)
+# Documentation des Modules
 
-readSurveys()
-Récupère toutes les enquêtes et renvoie un tableau d'enquêtes.
+## **Surveys Module (`surveysModule`)**
 
-updateSurvey(surveyId, update)
-Met à jour une enquête par surveyId et renvoie le nombre de modifications.
-        surveyId (int) 
-        update (object) 
-            title (string)
-            description (string)
-            questions (array) 
+### `createSurvey(survey)`
+- Ajoute une nouvelle enquête et renvoie l'ID inséré.
+  - **`survey`** (object)
+    - **`surveyId`** (int)
+    - **`title`** (string)
+    - **`description`** (string)
+    - **`questions`** (array)
 
+### `readSurveys()`
+- Récupère toutes les enquêtes et renvoie un tableau d'enquêtes.
 
-deleteSurvey(surveyId)
-Supprime une enquête par surveyId et renvoie le nombre de suppressions.
-        surveyId (int) 
+### `updateSurvey(surveyId, update)`
+- Met à jour une enquête par `surveyId` et renvoie le nombre de modifications.
+  - **`surveyId`** (int)
+  - **`update`** (object)
+    - **`title`** (string)
+    - **`description`** (string)
+    - **`questions`** (array)
 
-(questionsModule)
-createQuestion(question)
-Ajoute une nouvelle question et renvoie l'ID inséré.
-        question (object) 
-            questionId (int)
-            title (string) 
-            type (string) 
-            surveyId (int) 
-            answers (array) 
+### `deleteSurvey(surveyId)`
+- Supprime une enquête par `surveyId` et renvoie le nombre de suppressions.
+  - **`surveyId`** (int)
 
-readQuestions()
-Récupère toutes les questions et renvoie un tableau de questions.
+---
 
-updateQuestion(questionId, update)
-Met à jour une question par questionId et renvoie le nombre de modifications.
-        questionId (int)
-        update (object) 
-            title (string)
-            type (string)
-            answers (array) 
+## **Questions Module (`questionsModule`)**
 
-deleteQuestion(questionId)
-Supprime une question par questionId et renvoie le nombre de suppressions.
-        questionId (int) 
+### `createQuestion(question)`
+- Ajoute une nouvelle question et renvoie l'ID inséré.
+  - **`question`** (object)
+    - **`questionId`** (int)
+    - **`title`** (string)
+    - **`type`** (string)
+    - **`surveyId`** (int)
+    - **`answers`** (array)
 
-(answersModule)
-createAnswer(answer)
-Ajoute une nouvelle réponse et renvoie l'ID inséré. 
-        answer (object) 
-            answerId (int) 
-            questionId (int)
-            title (string) 
+### `readQuestions()`
+-Récupère toutes les questions et renvoie un tableau de questions.
 
-readAnswers()
-Récupère toutes les réponses et renvoie un tableau de réponses.
+### `updateQuestion(questionId, update)`
+- Met à jour une question par `questionId` et renvoie le nombre de modifications.
+  - **`questionId`** (int)
+  - **`update`** (object)
+    - **`title`** (string)
+    - **`type`** (string)
+    - **`answers`** (array)
 
-updateAnswer(answerId, update)
-Met à jour une réponse par answerId et renvoie le nombre de modifications.
-        answerId (int) 
-        update (object)
-            title (string) 
+### `deleteQuestion(questionId)`
+- Supprime une question par `questionId` et renvoie le nombre de suppressions.
+  - **`questionId`** (int)
 
-deleteAnswer(answerId)
-Supprime une réponse par answerId et renvoie le nombre de suppressions.
-        answerId (int) 
+---
+
+## **Answers Module (`answersModule`)**
+
+### `createAnswer(answer)`
+- Ajoute une nouvelle réponse et renvoie l'ID inséré.
+  - **`answer`** (object)
+    - **`answerId`** (int)
+    - **`questionId`** (int)
+    - **`title`** (string)
+
+### `readAnswers()`
+- Récupère toutes les réponses et renvoie un tableau de réponses.
+
+### `updateAnswer(answerId, update)`
+- Met à jour une réponse par `answerId` et renvoie le nombre de modifications.
+  - **`answerId`** (int)
+  - **`update`** (object)
+    - **`title`** (string)
+
+### `deleteAnswer(answerId)`
+- Supprime une réponse par `answerId` et renvoie le nombre de suppressions.
+  - **`answerId`** (int)
 
 
 ## Authors
