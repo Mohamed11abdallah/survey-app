@@ -119,4 +119,4 @@ Supprime une réponse par answerId et renvoie le nombre de suppressions.
 
 ## Authors
 
-[GitHub Profile](https://github.com/Mohamed11abdallah)
+[Mohamed Abdallahi M'khaitir](https://github.com/Mohamed11abdallah)
