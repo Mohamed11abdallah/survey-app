@@ -3,6 +3,10 @@ const { connectDB } = require('./config/database');
 async function createSurvey(survey) {
     try {
         const db = await connectDB();
+        const existingSurvey = await db.collection('surveys').findOne({ surveyId: survey.surveyId });
+        if (existingSurvey) {
+            throw new Error('Survey already exists');
+        }
         const result = await db.collection('surveys').insertOne(survey);
         console.log('Survey created:', result.insertedId);
         return result;
@@ -10,6 +14,7 @@ async function createSurvey(survey) {
         console.error('Error creating survey:', err.message);
     }
 }
+
 
 async function readSurveys() {
     try {
@@ -25,6 +30,10 @@ async function readSurveys() {
 async function updateSurvey(surveyId, update) {
     try {
         const db = await connectDB();
+        const existingSurvey = await db.collection('surveys').findOne({ surveyId: surveyId });
+        if (!existingSurvey) {
+            throw new Error('Survey not found');
+        }
         const result = await db.collection('surveys').updateOne(
             { surveyId: surveyId },
             { $set: update }
@@ -39,6 +48,10 @@ async function updateSurvey(surveyId, update) {
 async function deleteSurvey(surveyId) {
     try {
         const db = await connectDB();
+        const existingSurvey = await db.collection('surveys').findOne({ surveyId: surveyId });
+        if (!existingSurvey) {
+            throw new Error('Survey not found');
+        }
         const result = await db.collection('surveys').deleteOne({ surveyId: surveyId });
         console.log('Number of documents deleted:', result.deletedCount);
         return result;
@@ -46,5 +59,6 @@ async function deleteSurvey(surveyId) {
         console.error('Error deleting survey:', err.message);
     }
 }
+
 
 module.exports = { createSurvey, readSurveys, updateSurvey, deleteSurvey };

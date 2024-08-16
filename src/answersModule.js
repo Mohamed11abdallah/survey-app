@@ -3,6 +3,10 @@ const { connectDB } = require('./config/database');
 async function createAnswer(answer) {
     try {
         const db = await connectDB();
+        const existingAnswer = await db.collection('answers').findOne({ answerId: answer.answerId });
+        if (existingAnswer) {
+            throw new Error('Answer already exists');
+        }
         const result = await db.collection('answers').insertOne(answer);
         console.log('Answer created:', result.insertedId);
         return result;
@@ -10,6 +14,7 @@ async function createAnswer(answer) {
         console.error('Error creating answer:', err.message);
     }
 }
+
 
 async function readAnswers() {
     try {
@@ -22,10 +27,14 @@ async function readAnswers() {
     }
 }
 
-
 async function updateAnswer(answerId, update) {
     try {
         const db = await connectDB();
+        // Vérifier si la réponse existe
+        const existingAnswer = await db.collection('answers').findOne({ answerId: answerId });
+        if (!existingAnswer) {
+            throw new Error('Answer not found');
+        }
         const result = await db.collection('answers').updateOne(
             { answerId: answerId },
             { $set: update }
@@ -37,10 +46,13 @@ async function updateAnswer(answerId, update) {
     }
 }
 
-
 async function deleteAnswer(answerId) {
     try {
         const db = await connectDB();
+        const existingAnswer = await db.collection('answers').findOne({ answerId: answerId });
+        if (!existingAnswer) {
+            throw new Error('Answer not found');
+        }
         const result = await db.collection('answers').deleteOne({ answerId: answerId });
         console.log('Number of documents deleted:', result.deletedCount);
         return result;
@@ -48,6 +60,7 @@ async function deleteAnswer(answerId) {
         console.error('Error deleting answer:', err.message);
     }
 }
+
 
 module.exports = { createAnswer, readAnswers, updateAnswer, deleteAnswer };
 

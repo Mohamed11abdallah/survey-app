@@ -3,6 +3,10 @@ const { connectDB } = require('./config/database');
 async function createQuestion(question) {
     try {
         const db = await connectDB();
+        const existingQuestion = await db.collection('questions').findOne({ questionId: question.questionId });
+        if (existingQuestion) {
+            throw new Error('Question already exists');
+        }
         const result = await db.collection('questions').insertOne(question);
         console.log('Question created:', result.insertedId);
         return result;
@@ -10,6 +14,7 @@ async function createQuestion(question) {
         console.error('Error creating question:', err.message);
     }
 }
+
 
 async function readQuestions() {
     try {
@@ -26,6 +31,10 @@ async function readQuestions() {
 async function updateQuestion(questionId, update) {
     try {
         const db = await connectDB();
+        const existingQuestion = await db.collection('questions').findOne({ questionId: questionId });
+        if (!existingQuestion) {
+            throw new Error('Question not found');
+        }
         const result = await db.collection('questions').updateOne(
             { questionId: questionId },
             { $set: update }
@@ -41,6 +50,10 @@ async function updateQuestion(questionId, update) {
 async function deleteQuestion(questionId) {
     try {
         const db = await connectDB();
+        const existingQuestion = await db.collection('questions').findOne({ questionId: questionId });
+        if (!existingQuestion) {
+            throw new Error('Question not found');
+        }
         const result = await db.collection('questions').deleteOne({ questionId: questionId });
         console.log('Number of documents deleted:', result.deletedCount);
         return result;

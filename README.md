@@ -15,21 +15,21 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 
 1. **Clonez le repository :**
 
-    ```bash
+```bash
     git clone https://github.com/Mohamed11abdallah/survey-app.git
-    ```
+```
 
 2. **Accédez au dossier du projet :**
 
-    ```bash
+```bash
     cd survey-app
-    ```
+```
 
 3. **Installez les dépendances :**
 
-    ```bash
+```bash
     npm install
-    ```
+```
 
 4. **Configurez la base de données :**
 
@@ -44,68 +44,71 @@ Pour démarrer l'application, exécutez la commande suivante :
 npm start
 ```
 
-Fonctionnalités
-Gestion des Enquêtes (surveysModule)
+## Documentation des Fonctions
+Enquêtes (surveysModule)
 
-    Ajouter une enquête : createFile(db, fileData)
-        Insère une enquête dans la collection surveysModule.
-        Affiche l'ID de l'enquête ajoutée ou une erreur.
+    createFile(db, fileData)
+    Ajoute une enquête.
+    fileData : { "titre": "string", "description": "string", "date_creation": "ISODate", "questions": [ { "id_question": "string", "texte": "string" } ] }
 
-    Lire toutes les enquêtes : readFiles(db)
-        Récupère toutes les enquêtes de la collection surveysModule.
-        Affiche les enquêtes ou une erreur.
+    readFiles(db)
+    Récupère toutes les enquêtes.
+    Retour : Tableau d'enquêtes.
 
-    Mettre à jour une enquête : updateFile(db, filter, updateData)
-        Met à jour une enquête selon le filtre et les nouvelles données.
-        Affiche le nombre d'enquêtes modifiées ou une erreur.
+    updateFile(db, filter, updateData)
+    Met à jour une enquête.
+    filter : { "id": "string" }
+    updateData : { "titre": "string", "description": "string", "date_creation": "ISODate", "questions": [ { "id_question": "string", "texte": "string" } ] }
 
-    Supprimer une enquête : deleteFile(db, filter)
-        Supprime une enquête selon le filtre.
-        Affiche le nombre d'enquêtes supprimées ou une erreur.
+    deleteFile(db, filter)
+    Supprime une enquête.
+    filter : { "id": "string" }
 
-Gestion des Questions (questionsModule)
+Questions (questionsModule)
 
-    Ajouter une question : createQuestion(db, questionData)
-        Ajoute une question à la collection questionsModule.
-        Affiche l'ID de la question ajoutée ou une erreur.
+    createQuestion(db, questionData)
+    Ajoute une question.
+    questionData : { "texte": "string", "type": "string", "enqueteId": "string", "options": [ { "texte_option": "string", "est_correct": "boolean" } ] }
 
-    Lire toutes les questions : readQuestions(db)
-        Récupère toutes les questions de la collection questionsModule.
-        Affiche les questions ou une erreur.
+    readQuestions(db)
+    Récupère toutes les questions.
+    Retour : Tableau de questions.
 
-    Mettre à jour une question : updateQuestion(db, filter, updateData)
-        Met à jour une question selon le filtre et les nouvelles données.
-        Affiche le nombre de questions modifiées ou une erreur.
+    updateQuestion(db, filter, updateData)
+    Met à jour une question.
+    filter : { "id": "string" }
+    updateData : { "texte": "string", "type": "string", "enqueteId": "string", "options": [ { "texte_option": "string", "est_correct": "boolean" } ] }
 
-    Supprimer une question : deleteQuestion(db, filter)
-        Supprime une question selon le filtre.
-        Affiche le nombre de questions supprimées ou une erreur.
+    deleteQuestion(db, filter)
+    Supprime une question.
+    filter : { "id": "string" }
 
-Gestion des Réponses (answersModule)
+Réponses (answersModule)
 
-    Ajouter une réponse : createAnswer(db, answerData)
-        Ajoute une réponse à la collection answersModule.
-        Affiche l'ID de la réponse ajoutée ou une erreur.
+    createAnswer(db, answerData)
+    Ajoute une réponse.
+    answerData : { "questionId": "string", "texte": "string", "est_correcte": "boolean" }
 
-    Lire toutes les réponses : readAnswers(db)
-        Récupère toutes les réponses de la collection answersModule.
-        Affiche les réponses ou une erreur.
+    readAnswers(db)
+    Récupère toutes les réponses.
+    Retour : Tableau de réponses.
 
-    Mettre à jour une réponse : updateAnswer(db, filter, updateData)
-        Met à jour une réponse selon le filtre et les nouvelles données.
-        Affiche le nombre de réponses modifiées ou une erreur.
+    updateAnswer(db, filter, updateData)
+    Met à jour une réponse.
+    filter : { "id": "string" }
+    updateData : { "questionId": "string", "texte": "string", "est_correcte": "boolean" }
 
-    Supprimer une réponse : deleteAnswer(db, filter)
-        Supprime une réponse selon le filtre.
-        Affiche le nombre de réponses supprimées ou une erreur.
+    deleteAnswer(db, filter)
+    Supprime une réponse.
+    filter : { "id": "string" }
 
 Connexion à MongoDB
 
-    Se connecter à MongoDB : connect()
-        Se connecte à MongoDB et renvoie les instances db et client ou une erreur.
+    connect()
+    Connecte à MongoDB et renvoie db et client.
 
 
 
 Authors
 
-    Mohamed Abdallahi M'khaitir
+    Mohamed Abdallahi M'khaitir https://github.com/dashboard
