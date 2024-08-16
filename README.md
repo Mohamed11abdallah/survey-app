@@ -45,7 +45,7 @@ npm start
 ```
 
 ## Documentation des Fonctions
-Enquêtes (surveysModule)
+(surveysModule)
 createSurvey(survey)
 Ajoute une nouvelle enquête et renvoie l'ID inséré.
         survey (object)
@@ -70,7 +70,7 @@ deleteSurvey(surveyId)
 Supprime une enquête par surveyId et renvoie le nombre de suppressions.
         surveyId (int) 
 
-Questions (questionsModule)
+(questionsModule)
 createQuestion(question)
 Ajoute une nouvelle question et renvoie l'ID inséré.
         question (object) 
@@ -95,7 +95,7 @@ deleteQuestion(questionId)
 Supprime une question par questionId et renvoie le nombre de suppressions.
         questionId (int) 
 
-Réponses (answersModule)
+(answersModule)
 createAnswer(answer)
 Ajoute une nouvelle réponse et renvoie l'ID inséré. 
         answer (object) 
