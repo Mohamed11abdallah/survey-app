@@ -46,69 +46,77 @@ npm start
 
 ## Documentation des Fonctions
 Enquêtes (surveysModule)
+createSurvey(survey)
+Ajoute une nouvelle enquête et renvoie l'ID inséré.
+        survey (object)
+            surveyId (int)
+            title (string)
+            description (string)
+            questions (array)
 
-    createFile(db, fileData)
-    Ajoute une enquête.
-    fileData : { "titre": "string", "description": "string", "date_creation": "ISODate", "questions": [ { "id_question": "string", "texte": "string" } ] }
+readSurveys()
+Récupère toutes les enquêtes et renvoie un tableau d'enquêtes.
 
-    readFiles(db)
-    Récupère toutes les enquêtes.
-    Retour : Tableau d'enquêtes.
+updateSurvey(surveyId, update)
+Met à jour une enquête par surveyId et renvoie le nombre de modifications.
+        surveyId (int) 
+        update (object) 
+            title (string)
+            description (string)
+            questions (array) 
 
-    updateFile(db, filter, updateData)
-    Met à jour une enquête.
-    filter : { "id": "string" }
-    updateData : { "titre": "string", "description": "string", "date_creation": "ISODate", "questions": [ { "id_question": "string", "texte": "string" } ] }
 
-    deleteFile(db, filter)
-    Supprime une enquête.
-    filter : { "id": "string" }
+deleteSurvey(surveyId)
+Supprime une enquête par surveyId et renvoie le nombre de suppressions.
+        surveyId (int) 
 
 Questions (questionsModule)
+createQuestion(question)
+Ajoute une nouvelle question et renvoie l'ID inséré.
+        question (object) 
+            questionId (int)
+            title (string) 
+            type (string) 
+            surveyId (int) 
+            answers (array) 
 
-    createQuestion(db, questionData)
-    Ajoute une question.
-    questionData : { "texte": "string", "type": "string", "enqueteId": "string", "options": [ { "texte_option": "string", "est_correct": "boolean" } ] }
+readQuestions()
+Récupère toutes les questions et renvoie un tableau de questions.
 
-    readQuestions(db)
-    Récupère toutes les questions.
-    Retour : Tableau de questions.
+updateQuestion(questionId, update)
+Met à jour une question par questionId et renvoie le nombre de modifications.
+        questionId (int)
+        update (object) 
+            title (string)
+            type (string)
+            answers (array) 
 
-    updateQuestion(db, filter, updateData)
-    Met à jour une question.
-    filter : { "id": "string" }
-    updateData : { "texte": "string", "type": "string", "enqueteId": "string", "options": [ { "texte_option": "string", "est_correct": "boolean" } ] }
-
-    deleteQuestion(db, filter)
-    Supprime une question.
-    filter : { "id": "string" }
+deleteQuestion(questionId)
+Supprime une question par questionId et renvoie le nombre de suppressions.
+        questionId (int) 
 
 Réponses (answersModule)
+createAnswer(answer)
+Ajoute une nouvelle réponse et renvoie l'ID inséré. 
+        answer (object) 
+            answerId (int) 
+            questionId (int)
+            title (string) 
 
-    createAnswer(db, answerData)
-    Ajoute une réponse.
-    answerData : { "questionId": "string", "texte": "string", "est_correcte": "boolean" }
+readAnswers()
+Récupère toutes les réponses et renvoie un tableau de réponses.
 
-    readAnswers(db)
-    Récupère toutes les réponses.
-    Retour : Tableau de réponses.
+updateAnswer(answerId, update)
+Met à jour une réponse par answerId et renvoie le nombre de modifications.
+        answerId (int) 
+        update (object)
+            title (string) 
 
-    updateAnswer(db, filter, updateData)
-    Met à jour une réponse.
-    filter : { "id": "string" }
-    updateData : { "questionId": "string", "texte": "string", "est_correcte": "boolean" }
-
-    deleteAnswer(db, filter)
-    Supprime une réponse.
-    filter : { "id": "string" }
-
-Connexion à MongoDB
-
-    connect()
-    Connecte à MongoDB et renvoie db et client.
+deleteAnswer(answerId)
+Supprime une réponse par answerId et renvoie le nombre de suppressions.
+        answerId (int) 
 
 
+## Authors
 
-Authors
-
-    Mohamed Abdallahi M'khaitir https://github.com/dashboard
+[GitHub Profile](https://github.com/Mohamed11abdallah)
