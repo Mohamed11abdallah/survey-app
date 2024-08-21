@@ -126,5 +126,6 @@ npm start
 
 ## Authors
 
-[Mohamed Abdallahi M'khaitir](https://github.com/Mohamed11abdallah)
+[Mohamed Abdallahi M'khaitir](https://github.com/Mohamed11abdallah)                                              
+
 [Oumar Ndiaye](https://github.com/OUMARNDIAYE49)
